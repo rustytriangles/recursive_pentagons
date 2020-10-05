@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/recursive_pentagons/static/css/main.5f361e03.chunk.css",
+    "main.js": "/recursive_pentagons/static/js/main.7b78155c.chunk.js",
+    "main.js.map": "/recursive_pentagons/static/js/main.7b78155c.chunk.js.map",
+    "runtime-main.js": "/recursive_pentagons/static/js/runtime-main.bfb20891.js",
+    "runtime-main.js.map": "/recursive_pentagons/static/js/runtime-main.bfb20891.js.map",
+    "static/js/2.dde30beb.chunk.js": "/recursive_pentagons/static/js/2.dde30beb.chunk.js",
+    "static/js/2.dde30beb.chunk.js.map": "/recursive_pentagons/static/js/2.dde30beb.chunk.js.map",
+    "index.html": "/recursive_pentagons/index.html",
+    "precache-manifest.28be519f8a1b8cd2b6b6ca41aa772623.js": "/recursive_pentagons/precache-manifest.28be519f8a1b8cd2b6b6ca41aa772623.js",
+    "service-worker.js": "/recursive_pentagons/service-worker.js",
+    "static/css/main.5f361e03.chunk.css.map": "/recursive_pentagons/static/css/main.5f361e03.chunk.css.map",
+    "static/js/2.dde30beb.chunk.js.LICENSE.txt": "/recursive_pentagons/static/js/2.dde30beb.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.bfb20891.js",
+    "static/js/2.dde30beb.chunk.js",
+    "static/css/main.5f361e03.chunk.css",
+    "static/js/main.7b78155c.chunk.js"
+  ]
+}
