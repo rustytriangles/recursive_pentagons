@@ -6,29 +6,48 @@ class App extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            tiles: [new Pentagon(0,0,300,-Math.PI/2)],
+            tiles: [new Pentagon(0, 0, 345,-Math.PI/2, 0)],
+            leafStart: 0
         };
 
+        this.keepOld = false;
+
         this.tileProps = {
-            fillStyle: "red",
-            strokeColor: "none",
+            fillStyle: "#0066ff",
+            strokeColor: "#0047b3",
             strokeWidth: "1"
         };
     }
 
+    subdivide_tiles(oldTiles, leafStart, keepOld) {
+        let newTiles = [];
+        if (keepOld) {
+            for (let i=0; i<oldTiles.length; i++) {
+                newTiles.push(oldTiles[i]);
+            }
+        }
+        for (let i=leafStart; i<oldTiles.length; i++) {
+            const tiles = oldTiles[i].subdivide();
+            for (let j=0; j<tiles.length; j++) {
+                newTiles.push(tiles[j]);
+            }
+        }
+        return newTiles;
+    }
+
     onclick(e) {
         this.setState((prevState) => {
-            let newTiles = [];
-//            for (let i=0; i<prevState.tiles.length; i++) {
-//                newTiles.push(prevState.tiles[i]);
-//            }
-            for (let i=0; i<prevState.tiles.length; i++) {
-                const tiles = prevState.tiles[i].subdivide();
-                for (let j=0; j<tiles.length; j++) {
-                    newTiles.push(tiles[j]);
+            if (this.keepOld) {
+                return {
+                    tiles: this.subdivide_tiles(prevState.tiles, prevState.leafStart, true),
+                    leafStart: prevState.tiles.length
+                }
+            } else {
+                return {
+                    tiles: this.subdivide_tiles(prevState.tiles, prevState.leafStart, false),
+                    leafStart: 0
                 }
             }
-            return {tiles: newTiles}
         });
     }
 
@@ -38,23 +57,24 @@ class App extends React.Component {
         });
 
         const w = 800;
-        const h = 600;
+        const h = 700;
         const box = [-w/2, -h/2, w, h];
         return (
-                <div class="wrapper" >
+            <div class="wrapper"
+                 onClick={ this.onclick.bind(this)}
+            >
                 <h2>Recursive Pentagons</h2>
                 <svg xmlns="http://www.w3.org/2000/svg"
-            width={w}
-            height={h}
-            viewBox={box}
-            onClick={ this.onclick.bind(this)}
-            tabIndex="1"
+                     width={w}
+                     height={h}
+                     viewBox={box}
+                     tabIndex="1"
                 >
-                <>
-                { placeTiles(this.state.tiles) }
-            </>
+                    <>
+                        { placeTiles(this.state.tiles) }
+                    </>
                 </svg>
-                </div>
+            </div>
         );
     }
 }
